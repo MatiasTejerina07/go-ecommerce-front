@@ -1,0 +1,17 @@
+{
+    "editor.fontLigatures": false,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": [
+                    "comment.documentation",
+                    "keyword.other.special-method"
+                ],
+                "settings": {
+                    "fontStyle": "italic"
+                }
+            }
+        ]
+    },
+    "editor.fontFamily": "Fira Code"
+}
