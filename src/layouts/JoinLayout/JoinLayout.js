@@ -3,6 +3,7 @@ import { useAuth } from "@/hooks"
 import { Container, Grid, Header, Segment } from "semantic-ui-react"
 import { useRouter } from "next/router"
 import { useEffect } from "react"
+import { Layout } from "@/components/layout"
 
 export default function JoinLayout(props) {
   const { children } = props
@@ -20,13 +21,13 @@ export default function JoinLayout(props) {
 
   return (
     <Container className={styles.container}>
-      <p>LOGO</p>
+      <Layout.Logo />
       <div>
         <div className={styles.left}>
           INFORMACION
         </div>
         <div className={styles.rigth}>
-          {children}
+
         </div>
       </div>
       <h2>JoinLayout</h2>
