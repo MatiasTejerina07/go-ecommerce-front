@@ -23,6 +23,18 @@
     width: 50%;
     border-right: 1px solid $border-primary;
     padding: 40px 60px 40px 40px;
+
+    >div {
+        display: flex;
+        margin-bottom: 40px;
+
+        i {
+            align-items: center;
+            color: black;
+            font-size: 40px;
+            margin-right: 20px;
+        }
+    }
 }
 
 .rigth {
