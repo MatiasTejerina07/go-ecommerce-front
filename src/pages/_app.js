@@ -1,6 +1,7 @@
-import '@/scss/global.scss'
+import "@/index.css"
 import { initAmplify } from "@/utils"
 import { AuthProvider } from "@/contexts"
+import { NextUIProvider } from "@nextui-org/react";
 
 
 initAmplify()
@@ -8,7 +9,9 @@ initAmplify()
 export default function App({ Component, pageProps }) {
   return (
     <AuthProvider>
-      <Component {...pageProps} />
+      <NextUIProvider>
+        <Component {...pageProps} />
+      </NextUIProvider>
     </AuthProvider>
   )
 }

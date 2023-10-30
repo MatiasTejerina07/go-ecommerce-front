@@ -9,14 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/react": "^2.1.13",
+    "@nextui-org/system": "^2.0.10",
+    "@nextui-org/theme": "^2.1.9",
     "amazon-cognito-identity-js": "^6.3.6",
+    "autoprefixer": "^10.4.16",
     "aws-amplify": "^5.3.11",
     "aws-sdk": "^2.1483.0",
+    "framer-motion": "^10.16.4",
     "next": "14.0.0",
+    "postcss": "^8.4.31",
     "react": "^18",
     "react-dom": "^18",
-    "sass": "^1.69.5",
-    "semantic-ui-css": "^2.5.0",
-    "semantic-ui-react": "^2.1.4"
+    "tailwindcss": "^3.3.5"
   }
 }
