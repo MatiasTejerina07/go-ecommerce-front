@@ -19,9 +19,10 @@ export default function Inputs() {
 
 
     return (
-        <div className="flex flex-col gap-6">
-            <Input type="email" label="Email" variant="bordered" color="primary" className="font-roboto w-96" labelPlacement="outside" endContent={<IconEmail />} />
-            <Input type="password" label="Password" variant="bordered" color="primary" className="font-roboto w-96" labelPlacement="outside" endContent={<IconPassword />} />
+        <div className="flex flex-col gap-3">
+            <Input type="email" label="Email" variant="bordered" color="primary" className="font-roboto w-96" labelPlacement="inside" endContent={<IconEmail />} />
+            <Input type="password" label="Contraseña" variant="bordered" color="primary" className="font-roboto w-96" labelPlacement="inside" endContent={<IconPassword />} />
+            <Input type="password" label="Repite la contraseña" variant="bordered" color="primary" className="font-roboto w-96" labelPlacement="inside" endContent={<IconPassword />} />
         </div>
     )
 }
