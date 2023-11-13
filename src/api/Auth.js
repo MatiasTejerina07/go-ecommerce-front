@@ -13,4 +13,23 @@ async function register(email, password) {
     }
 }
 
-export const AuthAws = { register }
+async function reSendCode(email) {
+    try {
+        await Auth.resendSignUp(email)
+    } catch (error) {
+        throw error
+    }
+}
+
+async function confirmSignUp(email, code) {
+    try {
+        await Auth.confirmSignUp(email, code)
+        return true;
+    } catch (error) {
+        throw error
+    }
+
+}
+
+
+export const AuthAws = { register, reSendCode, confirmSignUp }

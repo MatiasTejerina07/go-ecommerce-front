@@ -12,6 +12,6 @@ export function validationSchema() {
     return Yup.object({
         email: Yup.string().email("Email invalído").required(true),
         password: Yup.string().required(true),
-        repeatpassword: Yup.string().required(true).oneOf([Yup.ref("password")], "La contraseña no es igual")
+        repeatpassword: Yup.string().required("Vuelve a escribir la contraseña").oneOf([Yup.ref("password")], "La contraseña no es igual")
     })
 }
