@@ -28,7 +28,6 @@ async function confirmSignUp(email, code) {
     } catch (error) {
         throw error
     }
-
 }
 
 
