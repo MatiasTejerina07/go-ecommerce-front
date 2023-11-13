@@ -1,9 +1,17 @@
 import * as Yup from "yup"
 
-export function validateSchema(data) {
+export function initialValues() {
+    return {
+        email: "",
+        password: "",
+        repeatpassword: ""
+    }
+}
+
+export function validationSchema() {
     return Yup.object({
-        email: Yup.string().email("El email es invalido").required(true),
-        password: Yup.string().required("Este campo es obligatorio"),
-        repeatpassword: Yup.string().oneOf([Yup.ref("password"), null], "Las contraseñas deben coincidir").required("Este campo es obligatorio"),
-    });
+        email: Yup.string().email("Email invalído").required(true),
+        password: Yup.string().required(true),
+        repeatpassword: Yup.string().required(true).oneOf([Yup.ref("password")], "La contraseña no es igual")
+    })
 }

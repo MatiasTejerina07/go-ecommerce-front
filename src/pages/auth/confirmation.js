@@ -1,9 +1,33 @@
 import { useRouter } from "next/router"
 import { Input } from "@nextui-org/react";
+import { useState, useEffect } from "react";
+import { Button } from "@nextui-org/react";
+import { useFormik } from "formik";
+import { initialValues, validationSchema } from "../../schema/confirmation"
 
 export default function ConfirmationPage() {
-    const { query } = useRouter();
-    console.log(query)
+    const router = useRouter();
+    const { query } = router;
+
+    const [loading, setLoading] = useState(false);
+
+    const formik = useFormik({
+        initialValues: initialValues(),
+        validateOnChange: false,
+        validationSchema: validationSchema(),
+        onSubmit: async (formValue) => {
+            formValue.email = query.email
+            try {
+                console.log("hola", formValue)
+            } catch (error) {
+                console.log("hoola", error)
+            }
+        }
+    });
+
+
+
+
     return (
         <div className="w-full h-full">
             <div className="flex h-screen justify-center items-center ">
@@ -13,15 +37,35 @@ export default function ConfirmationPage() {
                     </div>
                     <div className="w-[50%] flex justify-center items-center">
                         <div className="mt-2 flex flex-col items-center">
-                            <h1 className="font-poppins text-[25px] text-center">
+                            <h1 className="font-poppins text-[25px] text-center font-light">
                                 Te hemos enviado un email para validar tu correo
                             </h1>
-                            <Input className="pt-10 w-[540px]" />
-                            <p className="font-roboto pt-10 text-center text-[18px] font-thin pr-8">
-                                Porque lo que más nos importa es tu seguridad, te pedimos que verifiques tu cuenta.
+                            <form onSubmit={formik.handleSubmit}>
+
+                                <Input
+                                    name="code"
+                                    errorMessage={formik.errors.code}
+                                    type="password"
+
+                                    variant="bordered"
+                                    color="primary"
+
+                                    className="pt-10 w-[540px]"
+                                    placeholder="Tu codigo"
+                                    onChange={formik.handleChange}
+                                    value={formik.values.code}
+                                />
+
+                            </form>
+                            <p className="font-roboto pt-10 pb-5 text-center text-[18px] font-thin pr-4">
+                                Porque lo que más nos importa es tu seguridad,<br />te pedimos que verifiques tu cuenta.
+                            </p>
+                            <Button onClick={formik.handleSubmit} className="font-poppins bg-emerald-300" >
+                                Verificar cuenta
+                            </Button>
+                            <p className="pt-5 font-roboto text-[14px] font-thin">¿Aún no te ha llegado el código? Haz clíck en <span className="underline hover:text-blue-500 hover:cursor-pointer">reenviar código</span>
                             </p>
                         </div>
-
                     </div>
                 </div>
             </div>

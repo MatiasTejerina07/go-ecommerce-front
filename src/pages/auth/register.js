@@ -9,7 +9,7 @@ import { useState } from "react";
 import { AuthAws } from "@/api/Auth"
 import { useFormik } from "formik"
 import { useRouter } from "next/router"
-import { initialValues, validationSchema } from "./components/RegisterForm.form"
+import { initialValues, validationSchema } from "../../schema/register"
 
 
 export default function RegisterPage() {
@@ -54,7 +54,8 @@ export default function RegisterPage() {
                         variant="bordered"
                         color="primary"
                         className="font-roboto w-96"
-                        labelPlacement="inside" endContent={<IconEmail />} />
+                        labelPlacement="inside" endContent={<IconEmail />}
+                    />
                     <Input
                         name="password"
                         onChange={formik.handleChange}
@@ -65,7 +66,8 @@ export default function RegisterPage() {
                         variant="bordered"
                         color="primary"
                         className="font-roboto w-96"
-                        labelPlacement="inside" endContent={<IconPassword />} />
+                        labelPlacement="inside" endContent={<IconPassword />}
+                    />
                     <Input
                         name="repeatpassword"
                         onChange={formik.handleChange}
@@ -76,7 +78,8 @@ export default function RegisterPage() {
                         variant="bordered"
                         color="primary"
                         className="font-roboto w-96"
-                        labelPlacement="inside" endContent={<IconPassword />} />
+                        labelPlacement="inside" endContent={<IconPassword />}
+                    />
                 </form>
             </div>
             <div className="flex flex-col gap-4">
