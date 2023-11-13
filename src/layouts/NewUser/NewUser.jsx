@@ -1,7 +1,4 @@
 import React from "react"
-import Link from "next/link"
-import { Button } from "@nextui-org/react"
-
 
 
 export default function NewUser({ children }) {
@@ -9,8 +6,6 @@ export default function NewUser({ children }) {
     const [logo, data, inputs, page] = React.Children.toArray(children)
 
     return (
-
-
         <div className="w-full h-full">
             {logo}
             <div className="flex mt-20">

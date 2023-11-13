@@ -8,18 +8,29 @@ import { IconEmail, IconPassword } from "@/icon/icons";
 import { useState } from "react";
 import { AuthAws } from "@/api/Auth"
 import { useFormik } from "formik"
+import { useRouter } from "next/router"
 import { initialValues, validationSchema } from "./components/RegisterForm.form"
 
 
 export default function RegisterPage() {
 
+    const router = useRouter();
+
     const formik = useFormik({
         initialValues: initialValues(),
         validateOnChange: false,
         validationSchema: validationSchema(),
-        onSubmit: (formValue) => {
-            console.log("send")
-            console.log(formValue)
+        onSubmit: async (formValue) => {
+
+            try {
+                await AuthAws.register(
+                    formValue.email,
+                    formValue.password
+                )
+                router.push(`/auth/confirmation?email=${formValue.email}`)
+            } catch (error) {
+                console.log(error)
+            }
         }
     })
 
@@ -29,43 +40,45 @@ export default function RegisterPage() {
     return (
 
         <NewUser >
-            <Logo />
+            <Logo image={"/images/ecommerce.jpg"} />
             <Data />
-            <form className="flex flex-col gap-3">
-                <Input
-                    name="email"
-                    onChange={formik.handleChange}
-                    type="email"
-                    value={formik.values.email}
-                    label="Email"
-                    errorMessage={formik.errors.email}
-                    variant="bordered"
-                    color="primary"
-                    className="font-roboto w-96"
-                    labelPlacement="inside" endContent={<IconEmail />} />
-                <Input
-                    name="password"
-                    onChange={formik.handleChange}
-                    type="password"
-                    value={formik.values.password}
-                    label="Contraseña"
-                    errorMessage={formik.errors.password}
-                    variant="bordered"
-                    color="primary"
-                    className="font-roboto w-96"
-                    labelPlacement="inside" endContent={<IconPassword />} />
-                <Input
-                    name="repeatpassword"
-                    onChange={formik.handleChange}
-                    type="password"
-                    values={formik.values.repeatpassword}
-                    label="Repite la contraseña"
-                    errorMessage={formik.errors.repeatpassword}
-                    variant="bordered"
-                    color="primary"
-                    className="font-roboto w-96"
-                    labelPlacement="inside" endContent={<IconPassword />} />
-            </form>
+            <div>
+                <form className="flex flex-col gap-3">
+                    <Input
+                        name="email"
+                        onChange={formik.handleChange}
+                        type="email"
+                        value={formik.values.email}
+                        label="Email"
+                        errorMessage={formik.errors.email}
+                        variant="bordered"
+                        color="primary"
+                        className="font-roboto w-96"
+                        labelPlacement="inside" endContent={<IconEmail />} />
+                    <Input
+                        name="password"
+                        onChange={formik.handleChange}
+                        type="password"
+                        value={formik.values.password}
+                        label="Contraseña"
+                        errorMessage={formik.errors.password}
+                        variant="bordered"
+                        color="primary"
+                        className="font-roboto w-96"
+                        labelPlacement="inside" endContent={<IconPassword />} />
+                    <Input
+                        name="repeatpassword"
+                        onChange={formik.handleChange}
+                        type="password"
+                        values={formik.values.repeatpassword}
+                        label="Repite la contraseña"
+                        errorMessage={formik.errors.repeatpassword}
+                        variant="bordered"
+                        color="primary"
+                        className="font-roboto w-96"
+                        labelPlacement="inside" endContent={<IconPassword />} />
+                </form>
+            </div>
             <div className="flex flex-col gap-4">
                 <Link className="font-poppins -tracking-wider text-[14px] decoration-slice underline  hover:text-[#4338CA] hover:decoration-indigo-400 text-center" href={"/"}>
                     Ya tengo una cuenta
