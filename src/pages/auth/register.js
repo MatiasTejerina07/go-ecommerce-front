@@ -83,7 +83,7 @@ export default function RegisterPage() {
                 </form>
             </div>
             <div className="flex flex-col gap-4">
-                <Link className="font-poppins -tracking-wider text-[14px] decoration-slice underline  hover:text-[#4338CA] hover:decoration-indigo-400 text-center" href={"/"}>
+                <Link className="font-poppins -tracking-wider text-[14px] decoration-slice underline  hover:text-[#4338CA] hover:decoration-indigo-400 text-center" href={"/auth/login"}>
                     Ya tengo una cuenta
                 </Link>
                 <Button onClick={formik.handleSubmit} isLoading={formik.isSubmitting} type="submit" cas={Link} href="/auth/login" className=" w-96 bg-indigo-300/40 font-poppins hover:bg-indigo-300/80 hover:shadow-slate-400 hover:shadow-2xl duration-700 hover:transition-all ease-soft-spring ">
