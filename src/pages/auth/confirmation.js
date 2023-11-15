@@ -29,7 +29,6 @@ export default function ConfirmationPage() {
 
 
     const onResendCode = async () => {
-
         setLoading(true)
         AuthAws.reSendCode(query.email)
         setLoading(false)

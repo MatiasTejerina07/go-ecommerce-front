@@ -1,6 +1,7 @@
 import React from 'react'
 import { data } from "./ofData"
 
+
 export default function Datalogin() {
     return (
         <div>
