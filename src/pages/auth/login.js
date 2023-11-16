@@ -7,10 +7,12 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useFormik } from 'formik'
 import { IconEmail, IconPassword } from '@/icon/icons'
+import { useAuth } from "@/hooks"
 import { initialValue, validationSchema } from "@/schema/login"
 import { AuthAws } from "@/api/Auth"
 export default function LoginPage() {
     const router = useRouter()
+    const { login } = useAuth()
 
     const formik = useFormik({
         initialValues: initialValue(),
@@ -19,9 +21,8 @@ export default function LoginPage() {
         onSubmit: async (formValue) => {
 
             try {
-                const response = await AuthAws.login(formValue.email, formValue.password)
-                console.log(response)
-
+                await AuthAws.login(formValue.email, formValue.password)
+                await login()
             } catch (error) {
                 console.log(error)
             }
