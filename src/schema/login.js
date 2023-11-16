@@ -1,6 +1,6 @@
 import * as Yup from "yup"
 
-export function initalValue() {
+export function initialValue() {
     return {
         email: "",
         password: ""
@@ -10,7 +10,7 @@ export function initalValue() {
 
 export function validationSchema() {
     return Yup.object({
-        email: Yup.string().email(true).required(true),
-        password: Yup.string().required(true)
+        email: Yup.string().email("Email requerido").required("Email es requerido"),
+        password: Yup.string().required("La contraseña es requerida")
     })
 }

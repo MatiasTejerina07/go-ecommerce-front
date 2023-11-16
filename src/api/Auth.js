@@ -29,6 +29,20 @@ async function confirmSignUp(email, code) {
         throw error
     }
 }
+async function login(email, password) {
+    try {
+        await Auth.signIn({
+            username: email,
+            password
+        })
+        const session = await Auth.currentAuthenticatedUser({
+            bypassCache: false
+        })
+        return session
+    } catch (error) {
+        throw error
+    }
+}
 
 
-export const AuthAws = { register, reSendCode, confirmSignUp }
+export const AuthAws = { register, reSendCode, confirmSignUp, login }
