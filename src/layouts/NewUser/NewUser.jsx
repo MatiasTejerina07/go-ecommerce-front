@@ -1,9 +1,20 @@
 import React from "react"
-
+import { useEffect } from "react"
+import { useRouter } from "next/router"
+import { useAuth } from "@/hooks"
 
 export default function NewUser({ children }) {
-
     const [logo, data, inputs, page] = React.Children.toArray(children)
+
+
+    const router = useRouter()
+    const { user } = useAuth()
+    useEffect(() => {
+        if (user) router.push('/')
+    }, [])
+
+    if (user) return null
+
 
     return (
         <div className="w-full h-full">

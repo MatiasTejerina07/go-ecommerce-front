@@ -13,7 +13,9 @@ export function AuthProvider(props) {
     const login = async () => {
         try {
             const response = await userCtrl.me()
-            console.log(response)
+            setUser(response)
+            setIsAdmin(response.userStatus === 0)
+
         } catch (error) {
             console.log(error)
             setIsLoading(false)
