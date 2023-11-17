@@ -10,6 +10,7 @@ import { IconEmail, IconPassword } from '@/icon/icons'
 import { useAuth } from "@/hooks"
 import { initialValue, validationSchema } from "@/schema/login"
 import { AuthAws } from "@/api/Auth"
+
 export default function LoginPage() {
     const router = useRouter()
     const { login } = useAuth()
@@ -23,6 +24,7 @@ export default function LoginPage() {
             try {
                 await AuthAws.login(formValue.email, formValue.password)
                 await login()
+                router.push('/')
             } catch (error) {
                 console.log(error)
             }

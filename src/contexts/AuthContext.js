@@ -11,6 +11,9 @@ export function AuthProvider(props) {
     const [isAdmin, setIsAdmin] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
 
+    useEffect(() => {
+        setIsLoading(false)
+    }, [])
 
     const login = async () => {
         try {
