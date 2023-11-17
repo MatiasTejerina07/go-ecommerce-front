@@ -44,5 +44,16 @@ async function login(email, password) {
     }
 }
 
+async function retrieveSession() {
+    try {
+        const session = await Auth.currentSession({
+            bypassCache: false
+        })
+        return session.accessToken.jwtToken
+    } catch (error) {
+        throw error
+    }
+}
 
-export const AuthAws = { register, reSendCode, confirmSignUp, login }
+
+export const AuthAws = { register, reSendCode, confirmSignUp, login, retrieveSession }
