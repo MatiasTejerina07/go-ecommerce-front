@@ -55,5 +55,9 @@ async function retrieveSession() {
     }
 }
 
+async function logout() {
+    console.log("cerrar sesión")
+}
 
-export const AuthAws = { register, reSendCode, confirmSignUp, login, retrieveSession }
+
+export const AuthAws = { register, reSendCode, confirmSignUp, login, retrieveSession, logout }

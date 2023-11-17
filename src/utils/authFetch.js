@@ -5,6 +5,7 @@ export async function authFetch(url, params) {
     console.log(token)
 
     const logout = () => {
+        AuthAws.logout()
         window.location.replace("/")
     }
 
@@ -18,10 +19,11 @@ export async function authFetch(url, params) {
                 Authorization: token
             }
         }
-    }
-    try {
-        return await fetch(url, paramsTemp)
-    } catch (error) {
-        throw error
+
+        try {
+            return await fetch(url, paramsTemp)
+        } catch (error) {
+            throw error
+        }
     }
 }
