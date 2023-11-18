@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@nextui-org/react";
 import { useFormik } from "formik";
 import { initialValues, validationSchema } from "../../schema/confirmation"
-import { AuthAws } from "@/api/Auth"
+import { AuthAws } from "@/api/auth"
 
 export default function ConfirmationPage() {
     const router = useRouter();

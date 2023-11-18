@@ -9,7 +9,7 @@ import { useFormik } from 'formik'
 import { IconEmail, IconPassword } from '@/icon/icons'
 import { useAuth } from "@/hooks"
 import { initialValue, validationSchema } from "@/schema/login"
-import { AuthAws } from "@/api/Auth"
+import { AuthAws } from "@/api/auth"
 
 export default function LoginPage() {
     const router = useRouter()

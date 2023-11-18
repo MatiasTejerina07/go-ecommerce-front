@@ -1,18 +1,26 @@
 import { useEffect, useState, createContext } from "react";
-import { userCtrl } from "@/api/User"
+import { userCtrl, AuthAws } from "@/api"
+import { useRouter } from "next/router";
 
 
 export const AuthContext = createContext();
 
 export function AuthProvider(props) {
     const { children } = props;
-
+    const router = useRouter()
     const [user, setUser] = useState(null)
     const [isAdmin, setIsAdmin] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
-        setIsLoading(false)
+        (async () => {
+            try {
+                await login()
+                setIsLoading(false)
+            } catch (error) {
+                setIsLoading(false)
+            }
+        })()
     }, [])
 
     const login = async () => {
@@ -28,9 +36,19 @@ export function AuthProvider(props) {
             setIsLoading(false)
         }
     }
+
+    const logout = () => {
+        setUser(null)
+        AuthAws.logout()
+        router.push('/auth/login')
+    }
+
+
     const data = {
         user,
-        login
+        login,
+        isAdmin,
+        logout
     }
 
     if (isLoading) return null

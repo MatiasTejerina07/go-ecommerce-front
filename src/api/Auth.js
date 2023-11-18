@@ -56,7 +56,11 @@ async function retrieveSession() {
 }
 
 async function logout() {
-    console.log("cerrar sesión")
+    try {
+        await Auth.signOut()
+    } catch (error) {
+
+    }
 }
 
 

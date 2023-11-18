@@ -6,7 +6,7 @@ import Link from "next/link"
 import { Input } from "@nextui-org/react";
 import { IconEmail, IconPassword } from "@/icon/icons";
 import { useState } from "react";
-import { AuthAws } from "@/api/Auth"
+import { AuthAws } from "@/api/auth"
 import { useFormik } from "formik"
 import { useRouter } from "next/router"
 import { initialValues, validationSchema } from "../../schema/register"

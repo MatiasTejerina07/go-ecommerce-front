@@ -1,4 +1,4 @@
-import { AuthAws } from "@/api/Auth"
+import { AuthAws } from "@/api/auth"
 
 export async function authFetch(url, params) {
     const token = await AuthAws.retrieveSession();
