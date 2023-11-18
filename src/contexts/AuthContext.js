@@ -37,6 +37,13 @@ export function AuthProvider(props) {
         }
     }
 
+    const updateUser = (key, value) => {
+        setUser({
+            ...user,
+            [key]: value
+        })
+    }
+
     const logout = () => {
         setUser(null)
         AuthAws.logout()
@@ -48,7 +55,8 @@ export function AuthProvider(props) {
         user,
         login,
         isAdmin,
-        logout
+        logout,
+        updateUser
     }
 
     if (isLoading) return null
