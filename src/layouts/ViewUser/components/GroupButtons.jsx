@@ -12,7 +12,7 @@ export default function GroupButtons() {
 
     return (
         <div className='flex gap-6 items-center justify-center'>
-            <Link className="font-roboto" href={'/'}>
+            <Link className="font-roboto" href={'/admin/admin'}>
                 {
                     isAdmin &&
                     (

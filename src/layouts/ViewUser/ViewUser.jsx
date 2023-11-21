@@ -17,7 +17,7 @@ export default function ViewUser(props) {
                     </Link>
                 </div>
                 <div>
-                    <Search />
+                    <Search className={"w-[640px]"} />
                 </div>
                 <nav className=" flex w-[30%] justify-around ">
                     <GroupButtons />
