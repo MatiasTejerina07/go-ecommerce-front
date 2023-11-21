@@ -7,8 +7,7 @@ export default function index() {
     console.log(user)
     return (
         <ViewUser >
-            <h2>index</h2>
-            <button onClick={logout}>logout</button>
+
         </ViewUser>
     )
 }
