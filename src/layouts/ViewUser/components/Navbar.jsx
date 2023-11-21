@@ -19,20 +19,20 @@ export const Navbar = () => {
                 }
             </button>
             {close && (
-                <ul className="fixed">
+                <ul className="fixed -translate-x-20 bg-red-300 px-8 py-4 rounded-lg ">
                     <li>
                         <Link href={"/"}>
-                            path 1
+                            Inicio
                         </Link>
                     </li>
                     <li>
                         <Link href={"/"}>
-                            path 2
+                            Productos
                         </Link>
                     </li>
                     <li>
                         <Link href={"/"}>
-                            path 3
+                            zarasa
                         </Link>
                     </li>
                 </ul>

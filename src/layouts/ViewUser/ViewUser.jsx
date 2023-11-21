@@ -1,8 +1,12 @@
 import { Navbar } from "./components/Navbar"
 import { Input } from "@nextui-org/react"
 import Link from "next/link"
+import { useAuth } from "@/hooks"
 
-export default function ViewUser() {
+
+export default function ViewUser(props) {
+    const { children } = props;
+    const { isAdmin } = useAuth();
 
 
     return (
@@ -13,11 +17,12 @@ export default function ViewUser() {
                 </Link>
                 <Input title="hola" placeholder="hola" className="w-[600px]" variant="flat" />
                 <nav className="mr-10">
+                    {isAdmin && <Link href={"/admin"}>Admin</Link>}
                     <Navbar />
                 </nav>
             </header>
             <main>
-
+                {children}
             </main>
         </div>
     )
