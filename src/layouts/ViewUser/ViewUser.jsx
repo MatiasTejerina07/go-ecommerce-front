@@ -1,7 +1,5 @@
-import { Navbar } from "./components/Navbar"
-import Search from "./components/Search";
 import Link from "next/link"
-import GroupButtons from "./components/GroupButtons";
+import { Categories, GroupButtons, Navbar, Search } from "@/layouts/ViewUser/components/index"
 import { useAuth } from "@/hooks"
 
 
@@ -27,6 +25,12 @@ export default function ViewUser(props) {
                 </nav>
             </header>
             <main>
+                <section>
+                    <div>
+                        <Categories />
+
+                    </div>
+                </section>
                 {children}
             </main>
         </div>
