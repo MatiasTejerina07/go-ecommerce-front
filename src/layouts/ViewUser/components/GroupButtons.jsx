@@ -16,7 +16,7 @@ export default function GroupButtons() {
                 {
                     isAdmin &&
                     (
-                        <div className="flex gap-2">
+                        <div className="flex gap-2 items-center justify-center">
                             <p className="font-poppins">Admin</p>
                             <Admin />
                         </div>

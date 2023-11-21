@@ -20,7 +20,6 @@ export default function ViewUser(props) {
                     <Search />
                 </div>
                 <nav className=" flex w-[30%] justify-around ">
-                    {isAdmin && <Link href={"/admin"}>Admin</Link>}
                     <GroupButtons />
                 </nav>
             </header>
