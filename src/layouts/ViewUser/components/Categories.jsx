@@ -10,7 +10,6 @@ export default function Categories() {
         (async () => {
             try {
                 const response = await categoryCtrl.getAll()
-                console.log(response)
                 setCategories(response)
             } catch (error) {
                 throw error
@@ -18,7 +17,6 @@ export default function Categories() {
         })()
     }, [])
 
-    console.log(categories)
     return (
         <div>
             {categories && categories.map((category, index) =>

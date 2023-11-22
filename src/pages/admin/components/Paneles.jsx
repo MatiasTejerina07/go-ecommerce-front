@@ -2,19 +2,29 @@ import { PanelesData } from "./dataPaneles"
 import ViewUser from "@/layouts/ViewUser/ViewUser"
 import { Search } from "@/layouts/ViewUser/components"
 import Link from "next/link"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
 export default function Paneles() {
 
-    const [show, setShow] = useState(false)
+    useEffect(() => {
+        showCategories()
+    }, [])
 
+    const [show, setShow] = useState({})
+
+    const showCategories = () => {
+        const categories = {}
+        PanelesData.forEach(item => {
+            categories[item.menuItem] = false
+        })
+        setShow(categories)
+    }
+    console.log(show)
 
     const handleShow = (paneles, button) => {
         paneles.filter((panel) => {
             if (panel.menuItem === button.target.name) {
-                console.log(panel.menuItem)
-                console.log(button.target.name)
                 return setShow(true)
             }
         })

@@ -8,7 +8,7 @@ export default function GroupButtons() {
 
 
     const url = user ? "/auth/account" : "/auth/login"
-    console.log(user)
+
 
     return (
         <div className='flex gap-6 items-center justify-center'>
