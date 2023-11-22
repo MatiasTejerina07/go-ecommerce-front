@@ -9,18 +9,32 @@ export default function Paneles() {
 
     const [show, setShow] = useState(false)
 
-    const handleShow = (e) => {
-        console.log(e.target.string())
+
+    const handleShow = (paneles, button) => {
+        paneles.filter((panel) => {
+            if (panel.menuItem === button.target.name) {
+                console.log(panel.menuItem)
+                console.log(button.target.name)
+                return setShow(true)
+            }
+        })
+
     }
+
     return (
         <ViewUser>
-            <div className=" flex justify-center gap-10">
+            <div className=" flex ml-10 mt-10 gap-1">
                 {PanelesData.map((panel, index) =>
-                    <Link href={""} onClick={(e) => handleShow(e)} className="flex flex-col items-center gap-2">
-                        <p key={index}>{panel?.menuItem}</p>
-                        <span>{typeof panel.icon === "function" ? panel.icon() : ""}</span>
-                    </Link>
+                    <>
+                        <button onClick={(e) => handleShow(PanelesData, e)} name={panel.menuItem} key={index} className="flex flex-col items-center gap-2 border rounded-t-md px-4 py-2">
+                            {panel?.menuItem}
+                            <span>{typeof panel.icon === "function" ? panel.icon() : ""}</span>
+                        </button>
+                    </>
                 )}
+            </div>
+            <div className="border ml-10 mr-10">
+
             </div>
 
         </ViewUser>
