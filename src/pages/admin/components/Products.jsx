@@ -1,12 +1,27 @@
 import { Search } from "@/layouts/ViewUser/components"
-import { Button } from "@nextui-org/react"
+import ButtonAdd from "@/components/ButtonAdd"
+import { useState, useEffect } from "react"
+
 
 export default function Products() {
+
+    const [Products, setProducts] = useState(null)
+
+    useEffect(() => {
+        (async () => {
+            try {
+
+            } catch (error) {
+                console.log(error)
+            }
+        })()
+    }, [])
+
     return (
         <div className="w-full h-full">
             <div className="flex justify-between">
                 <Search className={"w-[300px]"} />
-                <Button className="bg-success-200 px-3 font-poppins font-thin text-[13px]  ease-out duration-500 hover:shadow-lg hover:bg-success-300 hover:font-normal shadow-black/25">Add product</Button>
+                <ButtonAdd name="Add Product" />
             </div>
             <div className="mt-4">
                 <h2>Productos...</h2>
