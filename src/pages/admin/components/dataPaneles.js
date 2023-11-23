@@ -1,4 +1,5 @@
-import { Search } from "@/layouts/ViewUser/components"
+
+import Products from "./Products"
 
 export const PanelesData = [
     {
@@ -9,7 +10,7 @@ export const PanelesData = [
                 </svg>
             )
         },
-        component: <Search />,
+        component: <Products />,
         color: ""
     },
     {
