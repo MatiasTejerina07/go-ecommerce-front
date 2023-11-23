@@ -2,6 +2,8 @@ import { Search } from "@/layouts/ViewUser/components"
 import ButtonAdd from "@/components/ButtonAdd"
 import { useState, useEffect } from "react"
 import { productsCtrl } from "@/api"
+import LoadingData from "./LoadingData";
+import TableList from "./Table";
 
 const ITEMS_PER_PAGE = 10;
 
@@ -23,6 +25,8 @@ export default function Products() {
         })()
     }, [])
 
+    if (!products) return <LoadingData title="Cargando productos" className="-translate-x-1/2 top-1/2 left-1/2" />;
+
     return (
         <div className="w-full h-full">
             <div className="flex justify-between">
@@ -30,17 +34,8 @@ export default function Products() {
                 <ButtonAdd name="Add Product" />
             </div>
             <div className="mt-4">
-                <h2>Productos...</h2>
-                {
-                    products && products.map((product, index) =>
-                        <div>
-                            <p>{product.prodTitle}</p>
+                <TableList data={products} />
 
-
-                        </div>
-
-                    )
-                }
             </div>
         </div>
 

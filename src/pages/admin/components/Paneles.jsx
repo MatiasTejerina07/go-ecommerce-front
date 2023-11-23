@@ -3,11 +3,14 @@ import ViewUser from "@/layouts/ViewUser/ViewUser"
 import { useState } from "react"
 import { Tabs, Tab, Card, CardBody, CardHeader } from "@nextui-org/react";
 
+
+
 export default function Paneles() {
 
 
-
     const [selected, setSelected] = useState("")
+
+
 
     return (
         <ViewUser>
