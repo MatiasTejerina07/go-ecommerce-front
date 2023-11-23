@@ -2,7 +2,6 @@ import { AuthAws } from "@/api/auth"
 
 export async function authFetch(url, params) {
     const token = await AuthAws.retrieveSession();
-    console.log(token)
 
     const logout = () => {
         AuthAws.logout()
