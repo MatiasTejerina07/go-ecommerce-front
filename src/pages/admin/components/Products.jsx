@@ -4,12 +4,14 @@ import { useState, useEffect } from "react"
 import { productsCtrl } from "@/api"
 import LoadingData from "./LoadingData";
 import TableList from "./Table";
+import Pagination from "./Pagination";
 
 const ITEMS_PER_PAGE = 10;
 
 export default function Products() {
 
     const [products, setProducts] = useState(null)
+    const [totalPage, setTotalPage] = useState(null)
     const page = 1
 
 
@@ -18,7 +20,8 @@ export default function Products() {
             try {
                 const response = await productsCtrl.getAll(1, 10, "")
                 setProducts(response.data || [])
-                console.log(response)
+                const total = Math.ceil(response.totalItems / ITEMS_PER_PAGE)
+                setTotalPage(total)
             } catch (error) {
                 console.log(error)
             }
@@ -33,9 +36,11 @@ export default function Products() {
                 <Search className={"w-[300px]"} />
                 <ButtonAdd name="Add Product" />
             </div>
-            <div className="mt-4">
+            <div className="mt-4 ">
                 <TableList data={products} />
-
+            </div>
+            <div className="flex  mt-6 justify-center">
+                <Pagination totalPage={totalPage} initialPage={page} />
             </div>
         </div>
 

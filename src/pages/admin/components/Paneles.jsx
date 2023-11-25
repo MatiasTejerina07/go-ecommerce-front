@@ -2,7 +2,7 @@ import { PanelesData } from "./dataPaneles"
 import ViewUser from "@/layouts/ViewUser/ViewUser"
 import { useState } from "react"
 import { Tabs, Tab, Card, CardBody, CardHeader } from "@nextui-org/react";
-
+import Pagination from "./Pagination";
 
 
 export default function Paneles() {
@@ -37,7 +37,6 @@ export default function Paneles() {
                     }
                 </Tabs>
             </div>
-
         </ViewUser>
     )
 }
