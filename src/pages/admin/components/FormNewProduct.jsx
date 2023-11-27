@@ -1,7 +1,8 @@
 import { Input, Spacer, Select, SelectItem, Button } from "@nextui-org/react"
 import { useState, useEffect } from "react"
 import { categoryCtrl } from "@/api"
-
+import { useFormik } from "formik"
+import { initalValue, validationSchema } from "@/schema/product.form"
 
 export default function FormNewProduct() {
     const [categories, setCategories] = useState(null)
@@ -11,7 +12,6 @@ export default function FormNewProduct() {
             try {
                 const response = await categoryCtrl.getAll();
                 setCategories(response)
-                console.log(categories)
             } catch (error) {
                 console.log("hola", error)
             }
@@ -20,38 +20,85 @@ export default function FormNewProduct() {
     }, [])
 
 
+    const formik = useFormik({
+        validationSchema: validationSchema(),
+        initialValues: initalValue(),
+        validateOnChange: false,
+        onSubmit: async (values) => {
+            console.log("first")
+            try {
+                console.log(values)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    })
+
 
 
     return (
         <div className="flex-col flex mt-8 ml-4 gap-4 w-full">
             <>
-                <Input className="w-[350px] font-roboto" name="ProdTitle" placeholder="Nombre" />
-                <Input className="w-[350px]  font-roboto" name="ProdPath" placeholder="Slug" />
+                <form className="flex flex-col gap-">
+                    <Input
+                        className="w-[350px] font-roboto"
+                        label="Nombre"
+                        name="ProdTitle" placeholder="Nombre"
+                        onChange={formik.handleChange}
+                        value={formik.values.ProdTitle}
+                        errorMessage={formik.errors.ProdTitle}
+                    />
 
-                <div className="">
-                    <Select className="w-[650px] font-roboto" label="Seleccione la categoria" >
+
+                    <Input
+                        className="w-[350px]  font-roboto"
+                        name="ProdPath"
+                        placeholder="Slug"
+                        onChange={formik.handleChange}
+                        value={formik.values.ProdPath}
+                        errorMessage={formik.errors.ProdPath}
+                    />
+
+                    {<Select
+                        className="w-[650px] font-roboto"
+                        name="ProdCategId"
+                        label="Seleccione la categoria"
+                        value={formik.values.ProdCategId}
+                        onChange={(e) => formik.setFieldValue("ProdCategId", e.target.value)}
+                    >
                         {categories && categories.map((category) =>
                         (
                             <SelectItem key={category.categID} >
                                 {category.categName}
                             </SelectItem>
                         )
-
-
                         )}
-                    </Select>
-                </div>
+                    </Select>}
 
-                <div className="flex gap-4">
-                    <Input type="number" name="ProdPrice" placeholder="Precio" className="w-[325px]  font-roboto" />
-                    <Input type="number" name="ProdStock" placeholder="Stock" className="w-[325px]  font-roboto" />
-                </div>
-                <div className="flex justify-center items-center">
-                    <Button className="w-[450px]  mt-4 bg-success-300  font-poppins " >
-                        Enviar
-                    </Button>
+                    <Input
+                        type="number"
+                        name="ProdStock"
+                        placeholder="Stock"
+                        className="w-[325px]  font-roboto"
+                        onChange={formik.handleChange}
+                        value={formik.values.ProdStock}
+                    />
 
-                </div>
+                    <Input
+                        type="number"
+                        name="ProdPrice"
+                        placeholder="Precio"
+                        className="w-[325px]  font-roboto"
+                        onChange={formik.handleChange}
+                        value={formik.values.ProdPrice}
+                    />
+
+
+
+                </form>
+                <Button isLoading={formik.isSubmitting} onClick={formik.handleSubmit} className="w-[450px]  mt-4 bg-success-300  font-poppins " >
+                    Enviar
+                </Button>
             </>
         </div >
     )
