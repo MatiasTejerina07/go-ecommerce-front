@@ -7,9 +7,8 @@ export function initalValue() {
         ProdStock: "",
         ProdPrice: "",
         ProdCategId: "",
-        /* 
         ProdDescription: "",
-         */
+
     }
 }
 
@@ -20,8 +19,7 @@ export function validationSchema() {
         ProdStock: Yup.number().required("El stock es obligatorio"),
         ProdPrice: Yup.number().required("El precio es obligatorio"),
         ProdCategId: Yup.number().required("La categoría es obligatoria"),
-        /*  
         ProdDescription: Yup.string().required("La descripción es obligatoria"),
-        */
+
     })
 }
