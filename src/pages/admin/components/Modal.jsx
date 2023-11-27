@@ -1,5 +1,5 @@
 import { Close } from "@/icon/icons"
-
+import FormNewProduct from "./FormNewProduct"
 
 
 export default function Modal({ close }) {
@@ -12,6 +12,8 @@ export default function Modal({ close }) {
                     </button>
                 </div>
                 <h1 className="text-center font-poppins">Nuevo producto</h1>
+
+                <FormNewProduct />
             </div>
         </div>
     )
