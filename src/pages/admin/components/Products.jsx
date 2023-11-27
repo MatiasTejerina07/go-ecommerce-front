@@ -6,10 +6,12 @@ import LoadingData from "./LoadingData";
 import TableList from "./Table";
 import Pagination from "./Pagination";
 import { useRouter } from "next/router";
-
+import Modal from "./Modal";
 const ITEMS_PER_PAGE = 10;
 
 export default function Products() {
+
+    const [showModal, setShowModal] = useState(false)
     const router = useRouter();
     const { query } = router;
     const [products, setProducts] = useState(null)
@@ -21,7 +23,7 @@ export default function Products() {
         (async () => {
             try {
                 const searchText = query.searchAdmin || ""
-                const response = await productsCtrl.getAll(1, 10, searchText)
+                const response = await productsCtrl.getAll(page, ITEMS_PER_PAGE, searchText)
                 setProducts(response.data || [])
                 const total = Math.ceil(response.totalItems / ITEMS_PER_PAGE)
                 setTotalPage(total)
@@ -33,11 +35,20 @@ export default function Products() {
 
     if (!products) return <LoadingData title="Cargando productos" className="-translate-x-1/2 top-1/2 left-1/2" />;
 
+    const openModal = () => {
+        setShowModal(!showModal)
+    }
+
     return (
         <div className="w-full h-full">
-            <div className="flex justify-between">
+            <div className="flex justify-between ">
                 <Search queryName="searchAdmin" className={"w-[300px]"} />
-                <ButtonAdd name="Add Product" />
+                <ButtonAdd onClick={openModal} name="Add Product" />
+                {
+                    showModal && (
+                        <Modal close={openModal} />
+                    )
+                }
             </div>
             <div className="mt-4 ">
                 <TableList data={products} />
