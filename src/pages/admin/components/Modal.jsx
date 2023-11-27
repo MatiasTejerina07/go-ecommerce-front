@@ -13,7 +13,7 @@ export default function Modal({ close }) {
                 </div>
                 <h1 className="text-center font-poppins">Nuevo producto</h1>
 
-                <FormNewProduct />
+                <FormNewProduct status={close} />
             </div>
         </div>
     )

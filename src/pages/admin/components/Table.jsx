@@ -32,19 +32,22 @@ export default function TableList(props) {
                 </tr>
 
                 {data.map((product, index) => (
-                    <tr key={index} className="flex justify-around items-center" >
+
+
+                    < tr key={index} className="flex justify-around items-center" >
                         <td className="w-[20%] text-center">{product.prodID}</td>
                         <td className="w-[20%] flex justify-center">
                             <img className="w-14 object-contain" src={image} />
                         </td>
                         <td className="w-[20%] text-center">{product.prodTitle}</td>
-                        <td className="w-[20%] text-center">{product.prodTitle}</td>
+                        <td className="w-[20%] text-center">{String(product.prodPrice).length > 0 ? product.prodPrice : ""}</td>
                         <td className="w-[10%] text-center">{product.prodStock}</td>
                         <td className="w-[10%] flex justify-center"><Actions /></td>
                     </tr>
 
+
                 ))}
             </tbody>
-        </table>
+        </table >
     );
 }

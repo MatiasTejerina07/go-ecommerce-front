@@ -4,8 +4,9 @@ import { categoryCtrl } from "@/api"
 import { useFormik } from "formik"
 import { initalValue, validationSchema } from "@/schema/product.form"
 import { Editor } from "@tinymce/tinymce-react"
+import { productsCtrl } from "@/api"
 
-export default function FormNewProduct() {
+export default function FormNewProduct({ status }) {
     const [categories, setCategories] = useState(null)
 
     useEffect(() => {
@@ -14,7 +15,7 @@ export default function FormNewProduct() {
                 const response = await categoryCtrl.getAll();
                 setCategories(response)
             } catch (error) {
-                console.log("hola", error)
+                console.log("error:", error)
             }
 
         })()
@@ -29,13 +30,15 @@ export default function FormNewProduct() {
             console.log("first")
             try {
                 console.log(values)
+                await productsCtrl.create(values)
+                status()
             } catch (error) {
                 console.log(error)
             }
         }
     })
 
-    console.log(formik.errors)
+
 
     return (
         <div className="flex-col flex mt-4  w-full">
@@ -99,7 +102,7 @@ export default function FormNewProduct() {
                             label="Seleccione la categoria"
                             value={formik.values.ProdCategId}
                             errorMessage={formik.errors.ProdCategId}
-                            onChange={(e) => formik.setFieldValue("ProdCategId", e.target.value)}
+                            onChange={(e) => formik.setFieldValue("ProdCategId", Number(e.target.value))}
                         >
                             {categories && categories.map((category) =>
                             (
