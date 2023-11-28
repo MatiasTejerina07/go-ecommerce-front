@@ -3,6 +3,7 @@ import { Categories, GroupButtons, Navbar, Search } from "@/layouts/ViewUser/com
 import { useAuth } from "@/hooks"
 
 
+
 export default function ViewUser(props) {
     const { children } = props;
     const { isAdmin } = useAuth();

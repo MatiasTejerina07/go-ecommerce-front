@@ -1,13 +1,13 @@
 import * as Yup from "yup"
 
-export function initalValue() {
+export function initalValue(data) {
     return {
-        ProdTitle: "",
-        ProdPath: "",
-        ProdStock: "",
-        ProdPrice: "",
-        ProdCategId: "",
-        ProdDescription: "",
+        ProdTitle: data?.prodTitle || "",
+        ProdPath: data?.prodPath || "",
+        ProdStock: data?.prodStock || "",
+        ProdPrice: data?.prodPrice || "",
+        ProdCategId: data?.prodCategId || "",
+        ProdDescription: data?.prodDescription || "",
 
     }
 }

@@ -6,7 +6,10 @@ import { initalValue, validationSchema } from "@/schema/product.form"
 import { Editor } from "@tinymce/tinymce-react"
 import { productsCtrl } from "@/api"
 
-export default function FormNewProduct({ status }) {
+export default function FormNewProduct(props) {
+    const { status, dataProduct } = props;
+
+
     const [categories, setCategories] = useState(null)
 
     useEffect(() => {
@@ -24,14 +27,17 @@ export default function FormNewProduct({ status }) {
 
     const formik = useFormik({
         validationSchema: validationSchema(),
-        initialValues: initalValue(),
+        initialValues: initalValue(dataProduct),
         validateOnChange: false,
         onSubmit: async (values) => {
-            console.log("first")
             try {
-                console.log(values)
-                await productsCtrl.create(values)
-                status()
+                if (dataProduct) {
+
+                } else {
+                    await productsCtrl.create(values)
+                    status()
+                }
+
             } catch (error) {
                 console.log(error)
             }

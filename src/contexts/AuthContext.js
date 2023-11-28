@@ -11,6 +11,7 @@ export function AuthProvider(props) {
     const [user, setUser] = useState(null)
     const [isAdmin, setIsAdmin] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
+    const [reload, setReload] = useState(false)
 
     useEffect(() => {
         (async () => {
@@ -49,14 +50,19 @@ export function AuthProvider(props) {
         router.push('/auth/login')
     }
 
+    const onReload = () => setReload((prevState) => !prevState)
+
+
 
     const data = {
         user,
         login,
         isAdmin,
         logout,
-        updateUser
+        updateUser,
+        reload
     }
+
 
     if (isLoading) return null
 
