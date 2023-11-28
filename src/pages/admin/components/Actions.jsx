@@ -11,8 +11,10 @@ export default function Actions(props) {
 
     const handleEdit = () => {
         setShowModal(!showModal)
-        console.log(dataProduct)
     }
+
+
+
 
     return (
         <div className="flex gap-1">

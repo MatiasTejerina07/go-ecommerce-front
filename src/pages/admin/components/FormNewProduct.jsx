@@ -7,7 +7,7 @@ import { Editor } from "@tinymce/tinymce-react"
 import { productsCtrl } from "@/api"
 
 export default function FormNewProduct(props) {
-    const { status, dataProduct } = props;
+    const { status, dataProduct, showModal } = props;
 
 
     const [categories, setCategories] = useState(null)
@@ -32,7 +32,8 @@ export default function FormNewProduct(props) {
         onSubmit: async (values) => {
             try {
                 if (dataProduct) {
-
+                    await productsCtrl.update(values, dataProduct?.prodID)
+                    status()
                 } else {
                     await productsCtrl.create(values)
                     status()
@@ -43,6 +44,7 @@ export default function FormNewProduct(props) {
             }
         }
     })
+
 
 
 
@@ -121,6 +123,17 @@ export default function FormNewProduct(props) {
 
 
 
+                        <Input
+                            type="number"
+                            name="ProdPrice"
+                            placeholder="Precio"
+                            className="w-[325px]  font-roboto"
+                            onChange={formik.handleChange}
+                            value={formik.values.ProdPrice}
+                            color="primary"
+                            variant="underlined"
+                            errorMessage={formik.errors.ProdPrice}
+                        />
 
 
                         <Input
@@ -135,17 +148,6 @@ export default function FormNewProduct(props) {
                             errorMessage={formik.errors.ProdStock}
                         />
 
-                        <Input
-                            type="number"
-                            name="ProdPrice"
-                            placeholder="Precio"
-                            className="w-[325px]  font-roboto"
-                            onChange={formik.handleChange}
-                            value={formik.values.ProdPrice}
-                            color="primary"
-                            variant="underlined"
-                            errorMessage={formik.errors.ProdPrice}
-                        />
 
 
                     </div>

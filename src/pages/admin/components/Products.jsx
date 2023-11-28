@@ -18,6 +18,7 @@ export default function Products() {
     const page = Number(query.page) || 1;
     const [showModal, setShowModal] = useState(false)
 
+
     useEffect(() => {
         (async () => {
             try {
@@ -26,11 +27,15 @@ export default function Products() {
                 setProducts(response.data || [])
                 const total = Math.ceil(response.totalItems / ITEMS_PER_PAGE)
                 setTotalPage(total)
+                console.log(total)
             } catch (error) {
                 console.log(error)
             }
+
         })()
     }, [query.page, query.searchAdmin, showModal])
+
+
 
     if (!products) return <LoadingData title="Cargando productos" className="-translate-x-1/2 top-1/2 left-1/2" />;
 
@@ -53,7 +58,7 @@ export default function Products() {
                     }
                 </div>
 
-                {<TableList data={products} />}
+                {<TableList data={products} close={showModal} />}
 
             </div>
             <div className="flex  mt-6 justify-center">

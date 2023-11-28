@@ -3,6 +3,7 @@ import Products from "./Products"
 import Categories from "./Categories"
 import User from "./User"
 
+
 export const PanelesData = [
     {
         menuItem: "Productos",
